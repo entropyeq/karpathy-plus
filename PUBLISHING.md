@@ -4,6 +4,8 @@ This file is for the person publishing the template (the author). End users neve
 
 Publish private-first, eyeball it, then flip public and turn on the template button. Every step is reversible. macOS/Linux terminal, run from inside the repo.
 
+(If you forked this template, use your own GitHub username and repo name in the commands below.)
+
 ### 0. Confirm the right GitHub account
 
 ```bash

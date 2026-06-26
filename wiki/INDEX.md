@@ -16,4 +16,4 @@ Last updated: 2026-06-17 (3 pages) | Last lint: never
 - [regressions](patterns/regressions.md) -- Corrections and the rules they crystallized
 
 ## Projects
-- (add one page per active project)
+- (add one page per active project; active tasks live in tasks-open.md)

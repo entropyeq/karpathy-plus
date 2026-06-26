@@ -1,8 +1,12 @@
 # Karpathy+
 
-A persistent, structured memory for your AI that sticks between chats and stays correct over time. A handful of plain markdown files plus a few rules that keep them honest. You build it in an afternoon and you own it forever.
+A persistent, structured memory for your AI — one you keep correct in a few minutes a week. A handful of plain markdown files plus a few rules that keep them honest. You build it in an afternoon and you own it forever.
 
-This is the three-layer architecture from Andrej Karpathy's LLM Wiki pattern, plus the operations layer that keeps it honest over time: a scheduled lint, a session-start memory injection, and a completion gate, so your knowledge base does not quietly drift out of sync with reality. The enforcement is the product.
+> **Prerequisite.** This runs on **Claude Code** (Anthropic's CLI, runs in a terminal, paid API usage). It does **not** work with claude.ai in the browser. You also need **git** and the **`gh` CLI** installed. If you do not have Claude Code set up, install it first.
+
+This is Karpathy's three-layer wiki pattern, plus the operations layer that keeps it honest over time: a scheduled lint, a session-start memory injection, and a completion gate. Surfaces drift fast, so the system surfaces that drift cheaply and you keep the memory in sync; it does not auto-prevent drift, the human does the reconciling. The enforcement is the product.
+
+Karpathy described the three-layer wiki pattern ([his gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)); the operations layer in runtime/ — the SessionStart injector, the SessionEnd change-capture hook, the scheduled-lint wiring, the completion gate, and the boundary rule — is mine. Not affiliated with, sponsored by, or endorsed by Andrej Karpathy.
 
 ## Which path are you on?
 
@@ -17,6 +21,7 @@ If you would rather just hand it to Claude: open Claude Code in your copy of thi
 - **`wiki/`** is the knowledge layer. It becomes your `~/knowledge/wiki`. Ships with an index, an operating manual, and empty buckets to fill.
 - **`runtime/`** is what makes it run. These go into your Claude config (`~/.claude`):
   - `CLAUDE.md` — the ~50-line rules file Claude reads every session. Fill in the bracketed blanks.
+  - `hooks/session-inject.sh` — injects your index at session start and nudges you when the weekly lint is overdue.
   - `hooks/wiki-session-hook.py` — records what changed each session.
   - `commands/wiki-lint.md` — the weekly health check, run as `/wiki-lint`.
   - `settings.json.example` — the hook wiring. Merge into your existing `~/.claude/settings.json`, do not overwrite.
@@ -31,6 +36,10 @@ Knowledge lives in one place (`~/knowledge`). Runtime lives somewhere else (`~/.
 ## Two halves
 
 Building it is an afternoon. Living with it is a few minutes a week, forever, and that second half is the whole point. Ask it questions, test it, correct it, reconcile it when it disagrees with itself. Skip that and you have a notebook, not a system that stays true.
+
+## How this differs
+
+The closest prior art is heavier by design. `claude-mem` and the "second brain" memory repos lean on SQLite and embeddings; `claude-memory-compiler` runs an Agent-SDK compile pipeline; several ship as installable plugins you bolt on. This is deliberately the opposite: markdown-only, human-in-the-loop, shipped as a "Use this template" repo you own outright, with nothing to install beyond the files themselves. The primitives here are not novel, and that is the honest concession. The value is the debugged default arrangement plus the maintenance discipline that keeps it from rotting.
 
 ---
 
