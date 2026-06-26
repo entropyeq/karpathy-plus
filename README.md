@@ -1,20 +1,33 @@
 # Karpathy+
 
-A persistent, structured memory for your AI — one you keep correct in a few minutes a week. A handful of plain markdown files plus a few rules that keep them honest. You build it in an afternoon and you own it forever.
+**Give your AI a memory that sticks.** Out of the box, your AI forgets everything the moment a chat ends. Karpathy+ fixes that: it turns a folder of plain text files into a personal knowledge base your AI reads at the start of every session and keeps current as you go. Set it up once, own it forever.
 
-> **Prerequisite.** This runs on **Claude Code** (Anthropic's CLI, runs in a terminal, paid API usage). It does **not** work with claude.ai in the browser. You also need **git** and the **`gh` CLI** installed. If you do not have Claude Code set up, install it first.
+### Start here: hand this repo to your agent
 
-This is Karpathy's three-layer wiki pattern, plus the operations layer that keeps it honest over time: a scheduled lint, a session-start memory injection, and a completion gate. Surfaces drift fast, so the system surfaces that drift cheaply and you keep the memory in sync; it does not auto-prevent drift, the human does the reconciling. The enforcement is the product.
+Open this folder in **Claude Code** and say:
 
-Karpathy described the three-layer wiki pattern ([his gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)); the operations layer in runtime/ — the SessionStart injector, the SessionEnd change-capture hook, the scheduled-lint wiring, the completion gate, and the boundary rule — is mine. Not affiliated with, sponsored by, or endorsed by Andrej Karpathy.
+> *Set this system up for me from this repo, following SETUP.md. Ask me anything you need before you start.*
+
+That is the whole quickstart. Your agent creates the files, wires the hooks, and asks you the few things only you can answer. Everything below is for when you (or your agent) want to understand or change a piece — you do not need to read it to get running.
+
+> **One requirement:** Karpathy+ runs on **Claude Code** (Anthropic's terminal app; it uses your paid API). It does **not** work with claude.ai in the browser. You also need `git` and the `gh` CLI installed.
+
+---
+
+## How it works
+
+Three layers, borrowed from Karpathy's LLM-wiki pattern, plus an operations layer that keeps the whole thing honest:
+
+- **Sources → Wiki → Schema.** Raw notes get distilled into a wiki of markdown pages, and a small `CLAUDE.md` tells your agent the conventions to follow. This three-layer pattern is Karpathy's ([his gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)).
+- **The operations layer is mine** — the part that keeps it from rotting: a session-start hook that injects your index into every conversation, a session-end hook that records what changed, a weekly lint that catches drift, a completion gate, and one boundary rule. It does not keep itself correct; it surfaces drift fast and makes reconciling it cheap, so you keep it in sync in minutes a week. The enforcement is the product.
+
+*Not affiliated with, sponsored by, or endorsed by Andrej Karpathy.*
 
 ## Which path are you on?
 
 - **You clicked "Use this template" and want to set it up** → follow **[SETUP.md](SETUP.md)**. The files already exist; it is a 15-minute install. (Do not follow the build guide's from-scratch steps, you do not need them.)
 - **You want to build from nothing, or understand every piece** → read **[BUILD-GUIDE.md](BUILD-GUIDE.md)**. It is written to be followed by a person or handed to Claude to execute.
 - **You are publishing this template** → see **[PUBLISHING.md](PUBLISHING.md)**.
-
-If you would rather just hand it to Claude: open Claude Code in your copy of this repo and say *"Set this system up for me from this repo, following SETUP.md. Ask me for anything you need before writing."*
 
 ## What is in the box
 
@@ -39,7 +52,7 @@ Building it is an afternoon. Living with it is a few minutes a week, forever, an
 
 ## How this differs
 
-The closest prior art is heavier by design. `claude-mem` and the "second brain" memory repos lean on SQLite and embeddings; `claude-memory-compiler` runs an Agent-SDK compile pipeline; several ship as installable plugins you bolt on. This is deliberately the opposite: markdown-only, human-in-the-loop, shipped as a "Use this template" repo you own outright, with nothing to install beyond the files themselves. The primitives here are not novel, and that is the honest concession. The value is the debugged default arrangement plus the maintenance discipline that keeps it from rotting.
+The closest prior art is heavier by design. `claude-mem` and the "second brain" memory repos lean on SQLite and embeddings; `claude-memory-compiler` runs an Agent-SDK compile pipeline; several ship as installable plugins you bolt on; hosted context-graph products like HipAI manage the whole thing as a service. This is deliberately the opposite: markdown-only, human-in-the-loop, shipped as a "Use this template" repo you own outright, with nothing to install beyond the files themselves. The primitives here are not novel, and that is the honest concession. The value is the debugged default arrangement plus the maintenance discipline that keeps it from rotting.
 
 ---
 
