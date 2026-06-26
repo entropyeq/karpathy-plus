@@ -9,18 +9,18 @@
 
 ![How Karpathy+ works: your raw notes become a living wiki that Claude reads at the start of every session, kept honest by a few automatic hooks](assets/architecture.svg)
 
-## Start here: hand this repo to Claude
+## ✦ Start here: hand this repo to Claude
 
-The whole quickstart is one sentence. Open this folder in **Claude Code** and say:
+Open this folder in **Claude Code** and tell it:
 
 > *Set this system up for me from this repo, following SETUP.md. Ask me anything you need before you start.*
 
-Claude does the rest:
-- creates the files
+It handles the rest:
+- writes the files
 - wires up the hooks
 - asks you the handful of things only you can answer
 
-You barely need to read further. Everything below is for when you (or Claude) want to understand or change a piece.
+The rest of this README is here for when you or Claude want to understand or change a piece.
 
 > **One requirement:** Karpathy+ runs on [Claude Code](https://claude.com/claude-code), Anthropic's terminal app (it uses your paid API). It does **not** work with claude.ai in the browser. You'll also want `git` and the `gh` CLI.
 
@@ -70,7 +70,7 @@ Knowledge lives in one place (`~/knowledge`). Runtime lives somewhere else (`~/.
 ## Two halves
 
 - **Building it** is an afternoon.
-- **Living with it** is a few minutes a week, forever. That second half is the whole point.
+- **Living with it** is a few minutes a week, forever, and that second half is where most people quit.
 
 Ask it questions, test it, correct it, reconcile it when it disagrees with itself. Skip that and you have a notebook, not a system that stays true.
 
@@ -82,7 +82,7 @@ The closest prior art is heavier by design:
 - several ship as installable plugins you bolt on
 - hosted context-graph products (like HipAI) manage it as a service
 
-This is deliberately the opposite: **markdown-only, human-in-the-loop, a "Use this template" repo you own outright**, with nothing to install beyond the files. The primitives here aren't novel, and that's the honest concession. The value is the debugged default arrangement plus the maintenance discipline that keeps it from rotting.
+This is deliberately the opposite: **markdown-only, human-in-the-loop, a "Use this template" repo you own outright**, with nothing to install beyond the files. None of the individual pieces are new. What you get is a default arrangement that already works, plus the upkeep habit most people skip.
 
 ---
 
