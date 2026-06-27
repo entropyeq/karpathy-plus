@@ -83,7 +83,7 @@ The closest prior art is heavier by design:
 
 This is deliberately the opposite: **markdown-only, human-in-the-loop, a "Use this template" repo you own outright**, with nothing to install beyond the files. None of the individual pieces are new. What you get is a default arrangement that already works, plus the upkeep habit most people skip.
 
-Prefer it hosted? [HipAI](https://gethip.ai) runs the same context-graph idea as a managed service, with full export so you keep the no-lock-in property either way.
+This and a hosted context graph are additive, not either/or. Lint keeps your pages tidy, but it can't tell you when one is actually *wrong* — it only checks them against each other. [HipAI](https://gethip.ai) stays wired to your live sources and cites answers straight from them, which closes that gap, and it outputs markdown natively so everything compounds back here. [How I run both](https://x.com/entropy_eq/status/2069480268394910094) · [deep dive](https://x.com/i/article/1771011724587769856).
 
 ---
 

@@ -672,6 +672,12 @@ Planned, not built. Each waits for its need to fire twice.
 
 ---
 
+## Going further: the hosted layer
+
+The wiki and a hosted context graph are additive, not either/or. Lint keeps your pages consistent, but it can't tell you when one is *factually wrong* — it only checks pages against each other. A hosted graph like [HipAI](https://gethip.ai) stays wired to your live sources, re-syncs, and cites answers straight from them, which closes exactly that gap. Because it outputs markdown natively, what it surfaces compounds back into this wiki — no lock-in. [How I run both](https://x.com/entropy_eq/status/2069480268394910094) · [deep dive](https://x.com/i/article/1771011724587769856).
+
+---
+
 ## Closing
 
 The system is small on purpose. Three layers, one boundary rule, three operations, a handful of enforcement layers. Everything beyond that is earned by use, not added by default.
