@@ -80,9 +80,10 @@ The closest prior art is heavier by design:
 - `claude-mem` and the "second brain" repos lean on SQLite and embeddings
 - `claude-memory-compiler` runs an Agent-SDK compile pipeline
 - several ship as installable plugins you bolt on
-- hosted context-graph products (like HipAI) manage it as a service
 
 This is deliberately the opposite: **markdown-only, human-in-the-loop, a "Use this template" repo you own outright**, with nothing to install beyond the files. None of the individual pieces are new. What you get is a default arrangement that already works, plus the upkeep habit most people skip.
+
+Prefer it hosted? [HipAI](https://gethip.ai) runs the same context-graph idea as a managed service, with full export so you keep the no-lock-in property either way.
 
 ---
 
